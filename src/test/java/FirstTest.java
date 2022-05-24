@@ -12,10 +12,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
-
 
 public class FirstTest {
 
@@ -33,6 +31,11 @@ public class FirstTest {
         if (driver != null) driver.close();
         logger.info("драйвер закрыт");
     }
+
+    String buttonEntrance = "//button[@data-modal-id='new-log-reg']";
+    String fieldEmail = "//div[@class = 'new-input-line new-input-line_slim new-input-line_relative']/input[@type='text'][@name = 'email']";
+    String fieldPassword = "//div[@class = 'new-input-line new-input-line_slim new-input-line_relative']/input[@type='password']";
+    String buttonToComeIn = "//button[@class='new-button new-button_full new-button_blue new-button_md']";
 
     String name = "Настя";
     String sName = "Демирджи";
@@ -60,10 +63,6 @@ public class FirstTest {
     String levelEnglishMenu = "//label//input[@name='english_level']/following-sibling::div";
     String getLevelEnglish = "//div[@class='lk-cv-block__select-scroll  js-custom-select-options']//button[@data-value=3]";
     String willingToRelocate = "//span[@class='radio__label'][text()='Да']";
-
-
-    String fieldAdd = "//input[@class='input input_straight-top-left input_straight-bottom-left lk-cv-block__input lk-cv-block__input_9 lk-cv-block__input_md-8']";
-    String communicationMethod = "//div[@class='input input_full lk-cv-block__input input_straight-bottom-right input_straight-top-right input_no-border-right lk-cv-block__input_fake lk-cv-block__input_select-fake js-custom-select-presentation']";
     String skypeButton = "//div[@class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container']//div//button[@data-value='skype']";
     String telegramButton = "//div[@class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container']//div//button[@data-value='telegram']";
     String addButton = "//button[@class='lk-cv-block__action lk-cv-block__action_md-no-spacing js-formset-add js-lk-cv-custom-select-add']";
@@ -79,6 +78,11 @@ public class FirstTest {
     String position = "//input[@name='work']";
     String saveButton = "//button[@name='continue']";
 
+    String workFormatFullDay = "//input[@title='Полный день']";
+    String workFormatFlexible = "//input[@title='Гибкий график']";
+    String workFormatDistant = "//input[@title='Удаленно']";
+    String checkboxes = "//div[@class='container__col container__col_9 container__col_md-8 container__col_middle']//input[@type='checkbox']";
+
     @Test
     public void openOtus() throws InterruptedException {
         authorization();
@@ -90,13 +94,7 @@ public class FirstTest {
     }
 
     public void authorization(){
-        String buttonEntrance = "//button[@data-modal-id='new-log-reg']";
-        String fieldEmail = "//div[@class = 'new-input-line new-input-line_slim new-input-line_relative']/input[@type='text'][@name = 'email']";
-        String fieldPassword = "//div[@class = 'new-input-line new-input-line_slim new-input-line_relative']/input[@type='password']";
-        String buttonToComeIn = "//button[@class='new-button new-button_full new-button_blue new-button_md']";
-
         ChromeOptions option = new ChromeOptions();
-        option.addArguments("incognito");
         driver = new ChromeDriver(option);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(cfg.otusUrl());
@@ -211,10 +209,7 @@ public class FirstTest {
     }
 
     private void fillCheckboxes(){
-        String workFormatFullDay = "//input[@title='Полный день']";
-        String workFormatFlexible = "//input[@title='Гибкий график']";
-        String workFormatDistant = "//input[@title='Удаленно']";
-        String checkboxes = "//div[@class='container__col container__col_9 container__col_md-8 container__col_middle']//input[@type='checkbox']";
+
         List<WebElement> checkboxesList = driver.findElements(By.xpath(checkboxes));
 
         for (WebElement element : checkboxesList) {
