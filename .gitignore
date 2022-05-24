@@ -3,4 +3,9 @@
 /build/
 /out/
 /out/production/classes/
-/out/test/classes/
+/out/test/classes/!/build.gradle
+!/gradlew
+!/gradlew.bat
+!/settings.gradle
+!/gradle/
+!/.idea/
