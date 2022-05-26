@@ -31,6 +31,9 @@ public class FirstTest {
         if (driver != null) driver.close();
         logger.info("драйвер закрыт");
     }
+    public void teardown() {
+        driver.quit ();
+    }
 
     String buttonEntrance = "//button[@data-modal-id='new-log-reg']";
     String fieldEmail = "//div[@class = 'new-input-line new-input-line_slim new-input-line_relative']/input[@type='text'][@name = 'email']";
@@ -88,6 +91,7 @@ public class FirstTest {
         authorization();
         openAboutMe();
         fieldPersonalInfo();
+        teardown();
         authorization();
         openAboutMe();
         checkPersonalInfo();
@@ -142,7 +146,7 @@ public class FirstTest {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(getCountry))).click();
         Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(cityMenu))).click();
-        Thread.sleep(5000);
+        Thread.sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(getCity))).click();
         driver.findElement(By.xpath(levelEnglishMenu)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(getLevelEnglish))).click();
